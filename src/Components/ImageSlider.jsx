@@ -20,13 +20,16 @@ function ImageSlider() {
         <img src="/images/slider-scale.jpg" alt="" />
       </Wrap>
       <Wrap>
-        <img src="/images/wakanda-forever.jpg" alt="" />
+        <img src="/images/wakanda-300.jpg" alt="" />
       </Wrap>
       <Wrap>
-        <img src="/images/drishyam.jpg" alt="" />
+        <img  src="/images/drishyam-368.jpg" alt="" />
       </Wrap>
       <Wrap>
-        <img src="/images/kang.jpg" alt="" />
+        <img src="/images/slider-badag.jpg" alt=""/>
+      </Wrap>
+      <Wrap>
+        <img src="/images/kang2.jpg" alt=""/>
       </Wrap>
     </Carousel>
   );
@@ -60,7 +63,7 @@ const Wrap = styled.div`
   img {
     border: 4px solid transparent;
     width: 100%;
-    height: 340px;
+    height: 100%;
     box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
     transition-duration: 300ms;
     &:hover {
