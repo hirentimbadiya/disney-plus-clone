@@ -34,18 +34,18 @@ const Container = styled.div`
 `;
 
 const Wrap = styled.div`
-  cursor:pointer;
+  cursor: pointer;
   border: 3px solid rgba(222, 222, 222, 0.2);
   border-radius: 5%;
   box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
-
+  transition: all 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s;
   img {
     height: 100%;
     width: 100%;
     object-fit: cover;
   }
-  &:hover{
-    transform:scale(1.1);
+  &:hover {
+    transform: scale(1.1);
     border: 3px solid rgba(222, 222, 222, 0.9);
   }
 `;
