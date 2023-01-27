@@ -1,45 +1,59 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import AddIcon from "@mui/icons-material/Add";
 import ShareIcon from "@mui/icons-material/Share";
+import { useParams } from "react-router-dom";
+import db from "../firebase";
+
 function Detail() {
+  const { id } = useParams();
+  const [movie, setMovie] = useState();
+  useEffect(() => {
+    // grab the movie information from database
+    db.collection("movies")
+      .doc(id)
+      .get()
+      .then((doc) => {
+        if (doc.exists) {
+          // save the movie data
+          setMovie(doc.data());
+        } else {
+          // redirect to homepage
+        }
+      });
+  }, []);
+
   return (
     <Container>
-      <Background>
-        <img
-          src="https://www.punekarnews.in/wp-content/uploads/2022/12/Pathan-1024x585.jpg"
-          alt=""
-        />
-      </Background>
-      <ImageTitle>
-        <img
-          src="https://www.pngall.com/wp-content/uploads/9/Call-of-Duty-Modern-Warfare-Logo-PNG-Download-Image.png"
-          alt=""
-        />
-      </ImageTitle>
-      <Controls>
-        <Play>
-          <PlayArrowIcon fontSize="large" />
-          <span>Play</span>
-        </Play>
-        <Trailer>
-          <PlayArrowIcon sx={`color : azure`} fontSize="large" />
-          <span>Trailer</span>
-        </Trailer>
-        <Add>
-          <AddIcon />
-        </Add>
-        <Share>
-          <ShareIcon />
-        </Share>
-      </Controls>
-      <SubTitles>2023 * 7m * Family , Fantasy , Kids , Animation</SubTitles>
-      <Description>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Assumenda
-        dolore sed, at itaque vero earum quis nihil, doloremque sequi repellat
-        fugit! Dolor, id?
-      </Description>
+      {movie && (
+        <>
+          <Background>
+            <img src={movie.backgroundImg} alt="" />
+          </Background>
+          <ImageTitle>
+            <img src={movie.titleImg} alt="" />
+          </ImageTitle>
+          <Controls>
+            <Play>
+              <PlayArrowIcon fontSize="large" />
+              <span>Play</span>
+            </Play>
+            <Trailer>
+              <PlayArrowIcon sx={`color : azure`} fontSize="large" />
+              <span>Trailer</span>
+            </Trailer>
+            <Add>
+              <AddIcon />
+            </Add>
+            <Share>
+              <ShareIcon />
+            </Share>
+          </Controls>
+          <SubTitles>{movie.subTitle}</SubTitles>
+          <Description>{movie.description}</Description>
+        </>
+      )}
     </Container>
   );
 }
@@ -72,17 +86,19 @@ const ImageTitle = styled.div`
   width: 35vw;
   min-height: 170px;
   min-width: 200px;
-  margin-top : 60px;
+  margin-top: 60px;
   img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit:contain;
   }
 `;
 
 const Controls = styled.div`
   display: flex;
   align-items: center;
+  margin-top: 14px;
+  margin-left: 70px;
 `;
 const Play = styled.button`
   border-radius: 6px;
@@ -134,11 +150,13 @@ const Share = styled(Add)`
 `;
 const SubTitles = styled.div`
   min-height: 20px;
-  margin-top:26px;
+  margin-top: 26px;
+  margin-left: 70px;
 `;
 const Description = styled.div`
   line-height: 1.4;
   font-size: 19px;
   margin-top: 16px;
   max-width: 768px;
+  margin-left: 70px;
 `;
