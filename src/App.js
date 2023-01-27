@@ -3,6 +3,7 @@ import './App.css';
 import Header from './Components/Header';
 import Home from './Components/Home';
 import Detail from './Components/Detail';
+import LogIn from './Components/LogIn';
 import {
   BrowserRouter as Router,
   Routes,
@@ -10,7 +11,7 @@ import {
   Link,
   Outlet
 } from "react-router-dom";
-import { match } from 'path-to-regexp'  
+import { match } from 'path-to-regexp'
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <Router>
         <Header />
         <Routes>
+          <Route path="/login" element={<LogIn />} />
           <Route path="/detail" element={<Detail />} />
           <Route path="/" element={<Home />} />
         </Routes>
