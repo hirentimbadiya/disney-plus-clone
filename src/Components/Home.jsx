@@ -4,10 +4,8 @@ import ImageSlider from "./ImageSlider";
 import Movies from "./Movies";
 import Viewers from "./Viewers";
 import db from "../firebase";
-import  {doc, onSnapshot, collection, query, where } from "firebase/firestore";
 import { useDispatch } from "react-redux";
 import { setMovies } from "../features/Movie/movieSlice";
-import { Navigate } from "react-router-dom";
 function Home() {
   const dispatch = useDispatch();
   useEffect(() => {
