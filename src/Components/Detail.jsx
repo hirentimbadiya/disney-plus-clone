@@ -98,7 +98,6 @@ const Controls = styled.div`
   display: flex;
   align-items: center;
   margin-top: 14px;
-  margin-left: 70px;
 `;
 const Play = styled.button`
   border-radius: 6px;
@@ -151,12 +150,10 @@ const Share = styled(Add)`
 const SubTitles = styled.div`
   min-height: 20px;
   margin-top: 26px;
-  margin-left: 70px;
 `;
 const Description = styled.div`
   line-height: 1.4;
   font-size: 19px;
   margin-top: 16px;
   max-width: 768px;
-  margin-left: 70px;
 `;
