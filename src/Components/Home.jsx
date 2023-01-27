@@ -1,14 +1,30 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import ImageSlider from "./ImageSlider";
 import Movies from "./Movies";
 import Viewers from "./Viewers";
+import db from "../firebase";
+import  {doc, onSnapshot, collection, query, where } from "firebase/firestore";
+import { useDispatch } from "react-redux";
+import { setMovies } from "../features/Movie/movieSlice";
+import { Navigate } from "react-router-dom";
 function Home() {
-  return <Container>
-    <ImageSlider/>
-    <Viewers/>
-    <Movies/>
-  </Container>;
+  const dispatch = useDispatch();
+  useEffect(() => {
+      db.collection("movies").onSnapshot((snapshot) => {
+        let tempMovies = snapshot.docs.map((doc) => {
+          return {id : doc.id , ...doc.data()}
+        })
+        dispatch(setMovies(tempMovies));
+      })
+  }, []);
+  return (
+    <Container>
+      <ImageSlider />
+      <Viewers />
+      <Movies />
+    </Container>
+  );
 }
 
 export default Home;
@@ -28,5 +44,5 @@ const Container = styled.main`
     right: 0;
     z-index: -1;
   }
-  overflow-x:hidden;
+  overflow-x: hidden;
 `;
