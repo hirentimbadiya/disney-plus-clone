@@ -17,19 +17,29 @@ function ImageSlider() {
   return (
     <Carousel {...settings}>
       <Wrap>
-        <img src="/images/slider-scale.jpg" alt="" />
+        <a>
+          <img src="/images/slider-scale.jpg" alt="" />
+        </a>
       </Wrap>
       <Wrap>
-        <img src="/images/wakanda-300.jpg" alt="" />
+        <a>
+          <img src="/images/wakanda-300.jpg" alt="" />
+        </a>
       </Wrap>
       <Wrap>
-        <img  src="/images/drishyam-368.jpg" alt="" />
+        <a>
+          <img src="/images/drishyam-368.jpg" alt="" />
+        </a>
       </Wrap>
       <Wrap>
-        <img src="/images/slider-badag.jpg" alt=""/>
+        <a>
+          <img src="/images/slider-badag.jpg" alt="" />
+        </a>
       </Wrap>
       <Wrap>
-        <img src="/images/kang2.jpg" alt=""/>
+        <a>
+          <img src="/images/kang2.jpg" alt="" />
+        </a>
       </Wrap>
     </Carousel>
   );
@@ -39,7 +49,7 @@ export default ImageSlider;
 
 const Carousel = styled(Slider)`
   margin-top: 20px;
-
+  margin-bottom: 20px;
   ul li button {
     &:before {
       color: white;
@@ -52,22 +62,26 @@ const Carousel = styled(Slider)`
   .slick-list {
     overflow: visible;
   }
-
-  button {
-    z-index: 1;
-  }
 `;
 
 const Wrap = styled.div`
   cursor: pointer;
-  img {
-    border: 4px solid transparent;
-    width: 100%;
-    height: 100%;
-    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
-    transition-duration: 300ms;
+  a {
+    border-radius: 4px;
+    box-shadow: rgb(0 0 0 / 69%) 0px 26px 30px -10px,
+      rgb(0 0 0 / 73%) 0px 16px 10px -10px;
+    display: block;
+    position: relative;
+    padding: 4px;
+    cursor: pointer;
+    img {
+      width: 100%;
+      height: 100%;
+    }
     &:hover {
-      border: 4px solid rgba(249, 249, 249, 0.76);
+      padding: 0;
+      border: 4px solid rgba(249, 249, 249, 0.8);
+      transition-duration: 300ms;
     }
   }
 `;
