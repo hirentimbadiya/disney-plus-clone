@@ -7,11 +7,11 @@ function LogIn() {
         <LogoOne src="images/cta-logo-one.svg" alt="logo" />
         <SignUP>GET ALL HERE</SignUP>
         <Description>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius iure
-          similique, quibusdam iste architecto sed deserunt assumenda fugiat
-          mollitia itaque?
+          Get Premier Access to Raya and the Last Dragon for an additional fee
+          with a Disney+ Clone subscription. This website is made for
+          educational purpose only. All rights reserved to ©Disney.
         </Description>
-        <LogoTwo src="images/cta-logo-two.png" alt="logo"/>
+        <LogoTwo src="images/cta-logo-two.png" alt="logo" />
       </Content>
     </Container>
   );
@@ -48,7 +48,6 @@ const Content = styled.div`
   width: 65%;
   display: flex;
   flex-direction: column;
-  
 `;
 const LogoOne = styled.img``;
 
@@ -65,7 +64,7 @@ const SignUP = styled.a`
   letter-spacing: 2px;
   cursor: pointer;
   box-shadow: rgb(38, 57, 77) 0px 10px 15px -10px;
-  transition : all 250ms cubic-bezier(0.25 , 0.46 , 0.45 , 0.94) 0s;
+  transition: all 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s;
   margin-top: 8px;
   margin-bottom: 12px;
 
@@ -77,12 +76,12 @@ const SignUP = styled.a`
 `;
 
 const Description = styled.div`
-  width : 100%;
-  font-size : 13px;
-  letter-spacing : 2px;
-  text-align : center;
+  width: 100%;
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-align: center;
   line-height: 2;
-`
+`;
 
 const LogoTwo = styled(LogoOne)`
   margin-top: 20px;
