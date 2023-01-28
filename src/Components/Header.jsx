@@ -44,9 +44,6 @@ function Header() {
         );
         history("/home");
       })
-      .catch((error) => {
-        alert(error.message);
-      });
   };
 
   const signOut = () => {
