@@ -1,3 +1,12 @@
+in this repository I have created a disney plus clone using react redux.
+i have used material-ui , react slick , react router dom , react useState , styled-components
+and also hosted it using firebase real time database.
+you can also visit the project , you need to login using google authentication.
+
+the poject has 3 main pages login page , home page and detail page.
+in login page you need to login using google and it will redirect to the home page and in home page 
+if you click on any recommended movie it will redirect you to the detail about that perticular clicked movie.
+
 # Getting Started with Create React App and Redux
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
