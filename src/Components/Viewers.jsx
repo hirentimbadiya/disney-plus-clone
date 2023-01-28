@@ -98,4 +98,9 @@ const Wrap = styled.div`
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
   }
+
+  @media(max-width:768px){
+    width: 85%;
+    margin: 0 auto;
+  }
 `;
