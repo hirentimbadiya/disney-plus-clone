@@ -7,7 +7,7 @@ function Movies() {
   const movies = useSelector(selectMovies);
   return (
     <Container>
-      <h4>Movies Recommended For You</h4>
+      <h2>Movies Recommended For You</h2>
       <Content>
         {movies &&
           movies.map((movie, key) => (
@@ -24,12 +24,25 @@ function Movies() {
 
 export default Movies;
 
-const Container = styled.div``;
+const Container = styled.div`
+  @media(max-width: 768px){
+    margin-top: 200px;
+  }
+  h2{
+    font-weight: bold;
+    font-family: 'PT Sans', sans-serif;
+  }
+`;
 
 const Content = styled.div`
   display: grid;
   grid-gap: 3%;
+  gap: 25px;
   grid-template-columns: repeat(4, minmax(0, 1fr));
+
+  @media(max-width:768px){
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 `;
 
 const Wrap = styled.div`
