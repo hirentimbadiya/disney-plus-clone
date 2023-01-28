@@ -32,16 +32,21 @@ function Header() {
   }, []);
 
   const signIn = () => {
-    auth.signInWithPopup(provider).then((result) => {
-      dispatch(
-        setLogin({
-          name: result.user.displayName,
-          email: result.user.email,
-          photo: result.user.photoURL,
-        })
-      );
-      history("/home");
-    });
+    auth
+      .signInWithPopup(provider)
+      .then((result) => {
+        dispatch(
+          setLogin({
+            name: result.user.displayName,
+            email: result.user.email,
+            photo: result.user.photoURL,
+          })
+        );
+        history("/home");
+      })
+      .catch((error) => {
+        alert(error.message);
+      });
   };
 
   const signOut = () => {
@@ -87,7 +92,32 @@ function Header() {
               <span>SERIES</span>
             </a>
           </NavMenu>
-          <UserImg onClick={signOut} src={userphoto} alt={username} />
+          <SignOut>
+            <UserImg src={userphoto} alt={username} />
+            <DropDown>
+              <DropDownItem>
+                <img src="./images/home-icon.svg" alt="home" />
+                <a href="/home">Home</a>
+              </DropDownItem>
+              <DropDownItem>
+                <img src="./images/search-icon.svg" alt="home" />
+                <a href="/home">Search</a>
+              </DropDownItem>
+              <DropDownItem>
+                <img src="./images/watchlist-icon.svg" alt="home" />
+                <a href="/home">Watchlist</a>
+              </DropDownItem>
+              <DropDownItem>
+                <img src="./images/original-icon.svg" alt="home" />
+                <a href="/home">Original</a>
+              </DropDownItem>
+              <DropDownItem>
+                <img src="./images/series-icon.svg" alt="home" />
+                <a href="/home">Series</a>
+              </DropDownItem>
+              <span onClick={signOut}>Sign Out</span>
+            </DropDown>
+          </SignOut>
         </>
       )}
     </Nav>
@@ -97,13 +127,15 @@ function Header() {
 export default Header;
 
 const Nav = styled.nav`
+  display: fixed;
+  z-index: 3;
   height: 70px;
   background: black;
   color: white;
   display: flex;
   align-items:center;
+  justify-content: space-between;
   padding 0px 36px;
-  overflow-x:hidden;
 `;
 
 const Logo = styled.img`
@@ -126,6 +158,7 @@ const NavMenu = styled.div`
         cursor:pointer;
         img {
             height: 20px;   
+            z-index: auto;
         }
         span{
             font-size:13px;
@@ -151,12 +184,14 @@ const NavMenu = styled.div`
             }
         }
     }
+    @media(max-width: 768px){
+      display: none;
+    }
 `;
 
 const UserImg = styled.img`
-  width: 48px;
   height: 48px;
-  cursor: pointer;
+  width: 48px;
   border-radius: 50%;
 `;
 
@@ -180,4 +215,71 @@ const LogInContainer = styled.div`
   flex: 1;
   display: flex;
   justify-content: flex-end;
+`;
+
+const DropDown = styled.div`
+  position: absolute;
+  top: 48px;
+  right: 0px;
+  background: rgba(0 , 0 , 0 ,1);
+  border: 1px solid rgba(150, 150, 150, 0.4);
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 14px;
+  letter-spacing: 3px;
+  width: 120px;
+  opacity: 0;
+  z-index: 100;
+
+  span {
+    text-transform: uppercase;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    &:hover {
+      color: rgba(0, 255, 0);
+    }
+  }
+`;
+
+const DropDownItem = styled.div`
+  display: none;
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    align-items: flex-start;
+    justify-content: flex-start;
+    a {
+      display: block;
+      margin-bottom: 14px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      text-decoration: none;
+      color: white;
+      font-family: Georgia, "Times New Roman", Times, serif;
+      &:hover {
+        color: rgba(0, 255, 0);
+      }
+    }
+    img {
+      width: 16px;
+      height: 16px;
+      margin-right: 7px;
+    }
+  }
+`;
+
+const SignOut = styled.div`
+  position: relative;
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  
+  &:hover {
+    ${DropDown} {
+      opacity: 1;
+      transition-duration: 1s;
+    }
+  }
 `;
